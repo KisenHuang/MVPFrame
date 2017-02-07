@@ -5,8 +5,6 @@ import com.kisen.mvpframe.mvp.model.BaseModel;
 import com.kisen.mvpframe.mvp.model.IModel;
 import com.kisen.mvpframe.mvp.view.IView;
 
-import java.util.List;
-
 /**
  * @Title :
  * @Description :
