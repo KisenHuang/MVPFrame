@@ -35,6 +35,11 @@ public class MainActivity extends AppCompatActivity implements IView {
     }
 
     @Override
+    public boolean isReadyToLoad() {
+        return true;
+    }
+
+    @Override
     public void onLoadData(IPresenter presenter) {
         dismissProgress();
         mRecyclerView.setAdapter(new BaseAdapter((ListPresenter)presenter));

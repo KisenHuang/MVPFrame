@@ -14,6 +14,11 @@ public interface IView {
     void onPreLoad();
 
     /**
+     * 是否准备就绪，可以加载数据
+     */
+    boolean isReadyToLoad();
+
+    /**
      * 加载数据
      *
      * @param presenter 数据持有类
