@@ -48,7 +48,7 @@ public class ListData extends Data {
         dest.writeString(this.title);
     }
 
-    protected ListData(Parcel in) {
+    private ListData(Parcel in) {
         this.id = in.readInt();
         this.title = in.readString();
     }

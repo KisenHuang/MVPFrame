@@ -48,7 +48,7 @@ public class LoginData extends Data {
         dest.writeString(this.pwd);
     }
 
-    protected LoginData(Parcel in) {
+    private LoginData(Parcel in) {
         this.userName = in.readString();
         this.pwd = in.readString();
     }
