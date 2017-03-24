@@ -1,43 +1,52 @@
 package com.kisen.mvpframe;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-import com.kisen.mvpframe.mvp.adapter.BaseAdapter;
-import com.kisen.mvpframe.mvp.presenter.IPresenter;
-import com.kisen.mvpframe.mvp.presenter.ListPresenter;
-import com.kisen.mvpframe.mvp.view.BaseActivity;
+import com.kisen.mvpframe.list.ListActivity;
+import com.kisen.mvpframe.list.ListData;
+import com.kisen.mvpframe.login.LoginActivity;
+import com.kisen.mvpframe.mvp.presenter.AbsListPresenter;
+import com.kisen.mvpframe.mvp.view.MvpActivity;
 
-public class MainActivity extends BaseActivity {
-
-    private RecyclerView mRecyclerView;
+public class MainActivity extends MvpActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        new MainPresenter(this).fetch();
     }
 
     @Override
-    public void onPreLoad() {
-        showProgress();
+    public void initView() {
     }
 
     @Override
-    public boolean isReadyToLoad() {
-        return true;
+    public void initData() {
     }
 
     @Override
-    public void onLoadData(IPresenter presenter) {
-        dismissProgress();
-        mRecyclerView.setAdapter(new BaseAdapter((ListPresenter)presenter));
+    public void initListener() {
+        findViewById(R.id.btn_list).setOnClickListener(this);
+        findViewById(R.id.btn_login).setOnClickListener(this);
+
     }
 
+    @Override
+    public AbsListPresenter<ListData> newPresenter() {
+        return null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_list:
+                startActivity(new Intent(mContext, ListActivity.class));
+                break;
+            case R.id.btn_login:
+                startActivity(new Intent(mContext, LoginActivity.class));
+                break;
+        }
+    }
 }

@@ -1,31 +1,36 @@
 package com.kisen.mvpframe.mvp.view;
 
+import com.kisen.mvpframe.mvp.model.ModelResult;
 import com.kisen.mvpframe.mvp.presenter.IPresenter;
 
 /**
- *
+ * Activity接口
  * Created by huang on 2017/2/7.
  */
-public interface IView {
+public interface IView<P extends IPresenter> {
+
+    void initView();
+
+    void initData();
+
+    void initListener();
 
     /**
-     * 加载前准备
-     */
-    void onPreLoad();
-
-    /**
-     * 是否准备就绪，可以加载数据
-     */
-    boolean isReadyToLoad();
-
-    /**
-     * 加载数据
+     * 创建Presenter
      *
-     * @param presenter 数据持有类
-     *                  @see com.kisen.mvpframe.mvp.presenter.ListPresenter
-     *                  and
-     *                  @see IPresenter
+     * @return IPresenter实现类
      */
-    void onLoadData(IPresenter presenter);
+    P newPresenter();
 
+    /**
+     * 打开加载动画
+     */
+    void openLoadingAnim();
+
+    /**
+     * 关闭加载动画
+     */
+    void closeLoadingAnim();
+
+    void onModelComplete(ModelResult result);
 }

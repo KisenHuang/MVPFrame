@@ -1,55 +1,42 @@
 package com.kisen.mvpframe.mvp.presenter;
 
-import com.kisen.mvpframe.mvp.bean.IData;
-import com.kisen.mvpframe.mvp.model.BaseModel;
-import com.kisen.mvpframe.mvp.model.IModel;
+import com.kisen.mvpframe.mvp.model.ModelResult;
+import com.kisen.mvpframe.mvp.model.ResultCallback;
 import com.kisen.mvpframe.mvp.view.IView;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * 普通页面使用的Presenter
  * Created by huang on 2017/2/7.
  */
-
 public abstract class AbsPresenter implements IPresenter {
 
-    private IData data;
+    private IView view;
 
-    protected IView view;
-
-    protected IModel model;
-
-    public AbsPresenter(IView view) {
-        this.view = view;
-        model = setupModel(view);
+    protected IView getView() {
+        return view;
     }
-
-    protected abstract IModel setupModel(IView view);
 
     @Override
-    public void fetch() {
-        view.onPreLoad();
-        if (view.isReadyToLoad())
-            model.load(new BaseModel.OnLoadListenerImpl() {
-                @Override
-                public void onComplete(IData data) {
-                    setData(data);
-                    view.onLoadData(AbsPresenter.this);
-                }
-            });
+    public void attachView(IView view) {
+        this.view = view;
     }
 
-    public void setData(IData data) {
-        this.data = data;
+    @Override
+    public void detachView() {
+        view = null;
     }
 
     /**
-     * 返回持有数据
-     *
-     * @return
+     * 默认实现结果回调类
      */
-    public IData getData() {
-        return data;
+    public class DefResultCallback implements ResultCallback {
+
+        @Override
+        public void onComplete(ModelResult result) {
+            //关闭加载动画
+            getView().closeLoadingAnim();
+            //通知View，数据加载完毕
+            getView().onModelComplete(result);
+        }
     }
 }

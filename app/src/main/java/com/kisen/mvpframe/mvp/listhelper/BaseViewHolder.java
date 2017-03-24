@@ -1,4 +1,4 @@
-package com.kisen.mvpframe.mvp.adapter;
+package com.kisen.mvpframe.mvp.listhelper;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
@@ -19,7 +19,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     public BaseViewHolder(View itemView) {
         super(itemView);
-        this.views = new SparseArray<View>();
+        this.views = new SparseArray<>();
         convertView = itemView;
     }
 
