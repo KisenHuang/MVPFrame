@@ -1,7 +1,7 @@
-package com.kisen.mvpframe.mvp.view;
+package com.kisen.mvplib.view;
 
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.presenter.IPresenter;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.presenter.IPresenter;
 
 /**
  * Activity接口
@@ -32,5 +32,11 @@ public interface IView<P extends IPresenter> {
      */
     void closeLoadingAnim();
 
-    void onModelComplete(ModelResult result);
+    /**
+     * Model加载数据完成回调方法
+     *
+     * @param result 返回结果
+     * @return 返回是否处理成功
+     */
+    boolean onModelComplete(ModelResult result);
 }

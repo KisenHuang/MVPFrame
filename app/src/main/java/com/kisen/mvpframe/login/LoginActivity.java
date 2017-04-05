@@ -8,9 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kisen.mvpframe.R;
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.view.MvpActivity;
-import com.kisen.mvpframe.mvp.util.RequestParam;
+import com.kisen.mvplib.model.ModelException;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.view.MvpActivity;
+import com.kisen.mvplib.util.RequestParam;
 
 public class LoginActivity extends MvpActivity<LoginPresenter> implements View.OnClickListener {
 
@@ -56,14 +57,20 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements View.O
     }
 
     @Override
-    public void onModelComplete(ModelResult result) {
+    public boolean onModelComplete(ModelResult result) {
         super.onModelComplete(result);
         if (result.getResultState() == ModelResult.ResultState.RESULT_ERROR)
-            return;
+            return false;
         if (result.getResultCode() == 101) {
             LoginData loginResult = getPresenter().getLoginResult();
             Toast.makeText(mContext, "用户名：" + loginResult.getUserName() + " 密码：" + loginResult.getPwd(), Toast.LENGTH_SHORT).show();
         }
+        return true;
+    }
+
+    @Override
+    protected void handleError(ModelException e) {
+
     }
 
     private boolean checkError() {

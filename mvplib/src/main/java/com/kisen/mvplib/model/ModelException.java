@@ -1,4 +1,4 @@
-package com.kisen.mvpframe.mvp.model;
+package com.kisen.mvplib.model;
 
 /**
  * @Title :

@@ -1,8 +1,8 @@
-package com.kisen.mvpframe.mvp.presenter;
+package com.kisen.mvplib.presenter;
 
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.model.ResultCallback;
-import com.kisen.mvpframe.mvp.view.IView;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.model.ResultCallback;
+import com.kisen.mvplib.view.IView;
 
 /**
  * 普通页面使用的Presenter

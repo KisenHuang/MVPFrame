@@ -1,11 +1,11 @@
-package com.kisen.mvpframe.mvp.presenter;
+package com.kisen.mvplib.presenter;
 
-import com.kisen.mvpframe.mvp.bean.Data;
-import com.kisen.mvpframe.mvp.listhelper.AbsItem;
-import com.kisen.mvpframe.mvp.listhelper.BaseAdapter;
-import com.kisen.mvpframe.mvp.listhelper.ItemLogic;
-import com.kisen.mvpframe.mvp.listhelper.ItemFactory;
-import com.kisen.mvpframe.mvp.view.IView;
+import com.kisen.mvplib.bean.Data;
+import com.kisen.mvplib.listhelper.AbsItem;
+import com.kisen.mvplib.listhelper.BaseAdapter;
+import com.kisen.mvplib.listhelper.ItemLogic;
+import com.kisen.mvplib.listhelper.ItemFactory;
+import com.kisen.mvplib.view.IView;
 
 import java.util.List;
 

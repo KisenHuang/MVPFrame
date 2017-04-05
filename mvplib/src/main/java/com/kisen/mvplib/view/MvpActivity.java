@@ -1,4 +1,4 @@
-package com.kisen.mvpframe.mvp.view;
+package com.kisen.mvplib.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.presenter.IPresenter;
-import com.kisen.mvpframe.mvp.model.ModelException;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.presenter.IPresenter;
+import com.kisen.mvplib.model.ModelException;
 
 /**
  * @Title :
@@ -44,6 +44,16 @@ public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivit
         mProgressDialog.show();
     }
 
+    private void dismissProgress() {
+        if (mProgressDialog.isShowing())
+            mProgressDialog.dismiss();
+    }
+
+    /**
+     * 初始化Presenter并关联Activity
+     *
+     * @return presenter
+     */
     protected P getPresenter() {
         if (presenter == null) {
             presenter = newPresenter();
@@ -55,24 +65,22 @@ public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivit
     }
 
     @Override
-    public void onModelComplete(ModelResult result) {
+    public boolean onModelComplete(ModelResult result) {
         if (result.getResultState() == ModelResult.ResultState.RESULT_ERROR) {
-            if (result.getException() == null)
-                return;
-            switch (result.getException().getErrorType()) {
-                case ModelException.ERROR_NET_NONE:
-                    break;
-                case ModelException.ERROR_NET_UNSTABLE:
-                    break;
-                case ModelException.ERROR_NET_SERVER:
-                    break;
-                case ModelException.ERROR_IO_CACHE:
-                    break;
-                case ModelException.ERROR_IO_LOCAL:
-                    break;
-            }
+            if (result.getException() != null)
+                handleError(result.getException());
+            return false;
+        } else {
+            return true;
         }
     }
+
+    /**
+     * 错误处理
+     *
+     * @param e 异常
+     */
+    protected abstract void handleError(ModelException e);
 
     @Override
     protected void onDestroy() {
@@ -83,11 +91,6 @@ public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivit
         }
         dismissProgress();
         mProgressDialog = null;
-    }
-
-    private void dismissProgress() {
-        if (mProgressDialog.isShowing())
-            mProgressDialog.dismiss();
     }
 
     @Override

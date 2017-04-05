@@ -1,11 +1,11 @@
 package com.kisen.mvpframe.list;
 
-import com.kisen.mvpframe.mvp.listhelper.AbsItem;
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.model.ResultCallback;
-import com.kisen.mvpframe.mvp.presenter.AbsListPresenter;
-import com.kisen.mvpframe.mvp.util.RequestParam;
-import com.kisen.mvpframe.mvp.view.IView;
+import com.kisen.mvplib.listhelper.AbsItem;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.model.ResultCallback;
+import com.kisen.mvplib.presenter.AbsListPresenter;
+import com.kisen.mvplib.util.RequestParam;
+import com.kisen.mvplib.view.IView;
 
 import java.util.ArrayList;
 

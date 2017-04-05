@@ -7,8 +7,9 @@ import android.view.View;
 import com.kisen.mvpframe.list.ListActivity;
 import com.kisen.mvpframe.list.ListData;
 import com.kisen.mvpframe.login.LoginActivity;
-import com.kisen.mvpframe.mvp.presenter.AbsListPresenter;
-import com.kisen.mvpframe.mvp.view.MvpActivity;
+import com.kisen.mvplib.model.ModelException;
+import com.kisen.mvplib.presenter.AbsListPresenter;
+import com.kisen.mvplib.view.MvpActivity;
 
 public class MainActivity extends MvpActivity implements View.OnClickListener {
 
@@ -16,6 +17,11 @@ public class MainActivity extends MvpActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void handleError(ModelException e) {
+
     }
 
     @Override

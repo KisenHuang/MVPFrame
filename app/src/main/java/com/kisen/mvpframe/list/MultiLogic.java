@@ -2,8 +2,8 @@ package com.kisen.mvpframe.list;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.kisen.mvpframe.mvp.listhelper.ItemLogic;
-import com.kisen.mvpframe.mvp.listhelper.Item;
+import com.kisen.mvplib.listhelper.ItemLogic;
+import com.kisen.mvplib.listhelper.Item;
 
 import java.util.ArrayList;
 import java.util.List;

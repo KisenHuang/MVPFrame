@@ -1,8 +1,8 @@
-package com.kisen.mvpframe.mvp.presenter;
+package com.kisen.mvplib.presenter;
 
 import android.app.Activity;
 
-import com.kisen.mvpframe.mvp.view.IView;
+import com.kisen.mvplib.view.IView;
 
 /**
  * 页面数据处理逻辑

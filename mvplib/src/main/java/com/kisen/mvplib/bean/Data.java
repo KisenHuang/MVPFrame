@@ -1,4 +1,4 @@
-package com.kisen.mvpframe.mvp.bean;
+package com.kisen.mvplib.bean;
 
 import android.os.Parcelable;
 

@@ -2,7 +2,7 @@ package com.kisen.mvpframe.login;
 
 import android.os.Parcel;
 
-import com.kisen.mvpframe.mvp.bean.Data;
+import com.kisen.mvplib.bean.Data;
 
 /**
  * @Title :

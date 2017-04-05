@@ -3,10 +3,10 @@ package com.kisen.mvpframe.list;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.kisen.mvpframe.mvp.listhelper.Item;
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.model.ResultCallback;
-import com.kisen.mvpframe.mvp.util.RequestParam;
+import com.kisen.mvplib.listhelper.Item;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.model.ResultCallback;
+import com.kisen.mvplib.util.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;

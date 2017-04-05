@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.listhelper.BaseAdapter;
-import com.kisen.mvpframe.mvp.view.MvpActivity;
+import com.kisen.mvplib.model.ModelException;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.view.MvpActivity;
 import com.kisen.mvpframe.R;
 
 public class ListActivity extends MvpActivity<TestListPresenter> implements View.OnClickListener {
@@ -42,8 +42,11 @@ public class ListActivity extends MvpActivity<TestListPresenter> implements View
     }
 
     @Override
-    public void onModelComplete(ModelResult result) {
-        super.onModelComplete(result);
+    public boolean onModelComplete(ModelResult result) {
+        boolean b = super.onModelComplete(result);
+        if (!b) {
+            return false;
+        }
         switch (result.getResultCode()) {
             case 101:
                 Toast.makeText(mContext, "列表加载完毕", Toast.LENGTH_SHORT).show();
@@ -53,6 +56,23 @@ public class ListActivity extends MvpActivity<TestListPresenter> implements View
                 Toast.makeText(mContext, "提交成功 " + ids, Toast.LENGTH_SHORT).show();
                 break;
         }
+        return true;
+    }
+
+    @Override
+    protected void handleError(ModelException e) {
+//            switch (e.getErrorType()) {
+//                case ModelException.ERROR_NET_NONE:
+//                    break;
+//                case ModelException.ERROR_NET_UNSTABLE:
+//                    break;
+//                case ModelException.ERROR_NET_SERVER:
+//                    break;
+//                case ModelException.ERROR_IO_CACHE:
+//                    break;
+//                case ModelException.ERROR_IO_LOCAL:
+//                    break;
+//            }
     }
 
     @Override

@@ -6,8 +6,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kisen.mvpframe.R;
-import com.kisen.mvpframe.mvp.listhelper.AbsItem;
-import com.kisen.mvpframe.mvp.listhelper.BaseViewHolder;
+import com.kisen.mvplib.listhelper.AbsItem;
+import com.kisen.mvplib.listhelper.BaseViewHolder;
 
 /**
  * 首页Item样式

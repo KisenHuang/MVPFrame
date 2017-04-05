@@ -1,9 +1,9 @@
 package com.kisen.mvpframe.login;
 
-import com.kisen.mvpframe.mvp.model.ModelException;
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.model.ResultCallback;
-import com.kisen.mvpframe.mvp.util.RequestParam;
+import com.kisen.mvplib.model.ModelException;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.model.ResultCallback;
+import com.kisen.mvplib.util.RequestParam;
 
 /**
  * @Title :

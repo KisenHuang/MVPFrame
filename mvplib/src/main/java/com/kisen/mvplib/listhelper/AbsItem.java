@@ -1,9 +1,9 @@
-package com.kisen.mvpframe.mvp.listhelper;
+package com.kisen.mvplib.listhelper;
 
 import android.content.Context;
 import android.view.View;
 
-import com.kisen.mvpframe.mvp.bean.Data;
+import com.kisen.mvplib.bean.Data;
 
 /**
  * 自定义Item控制类
@@ -34,19 +34,6 @@ public abstract class AbsItem<D extends Data> implements Item, View.OnClickListe
         onRefreshViewStyle();
     }
 
-    /**
-     * 得到Data数据，显示在Item上
-     *
-     * @param helper item UI持有对象
-     * @see Item setViewData(Context context,BaseViewHolder helper, int adapterPosition)
-     */
-    protected abstract void setViewData(BaseViewHolder helper);
-
-    /**
-     * 用于更新UI样式
-     */
-    protected abstract void onRefreshViewStyle();
-
     @Override
     public int getItemType() {
         //默认返回 0，可重写
@@ -65,6 +52,19 @@ public abstract class AbsItem<D extends Data> implements Item, View.OnClickListe
         }
         onItemClick(v);
     }
+
+    /**
+     * 用于更新UI样式
+     */
+    protected abstract void onRefreshViewStyle();
+
+    /**
+     * 得到Data数据，显示在Item上
+     *
+     * @param helper item UI持有对象
+     * @see Item setViewData(Context context,BaseViewHolder helper, int adapterPosition)
+     */
+    protected abstract void setViewData(BaseViewHolder helper);
 
     /**
      * 设置Item是否可以点击

@@ -1,10 +1,10 @@
 package com.kisen.mvpframe.login;
 
-import com.kisen.mvpframe.mvp.model.ModelResult;
-import com.kisen.mvpframe.mvp.model.ResultCallback;
-import com.kisen.mvpframe.mvp.presenter.AbsPresenter;
-import com.kisen.mvpframe.mvp.util.RequestParam;
-import com.kisen.mvpframe.mvp.view.IView;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.model.ResultCallback;
+import com.kisen.mvplib.presenter.AbsPresenter;
+import com.kisen.mvplib.util.RequestParam;
+import com.kisen.mvplib.view.IView;
 
 /**
  * @Title :

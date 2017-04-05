@@ -1,9 +1,10 @@
-package com.kisen.mvpframe.mvp.listhelper;
+package com.kisen.mvplib.listhelper;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 
-import com.kisen.mvpframe.mvp.bean.Data;
-import com.kisen.mvpframe.mvp.view.IView;
+import com.kisen.mvplib.bean.Data;
+import com.kisen.mvplib.view.IView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class ItemFactory<D extends Data> {
         context = (Context) view;
     }
 
+    @Nullable
     public List<AbsItem<D>> makeItems(List<D> list, ItemLogic logic) {
         if (list == null)
             return null;
