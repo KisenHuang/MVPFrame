@@ -1,13 +1,13 @@
 package com.kisen.mvplib.view;
 
 import com.kisen.mvplib.model.ModelResult;
-import com.kisen.mvplib.presenter.IPresenter;
+import com.kisen.mvplib.presenter.BasePresenter;
 
 /**
  * Activity接口
  * Created by huang on 2017/2/7.
  */
-public interface View<P extends IPresenter> {
+public interface View<P extends BasePresenter> {
 
     /**
      * 初始化视图

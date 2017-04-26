@@ -8,7 +8,7 @@ import com.kisen.mvplib.view.View;
  * 普通页面使用的Presenter
  * Created by huang on 2017/2/7.
  */
-public abstract class BasePresenter implements IPresenter {
+public class BasePresenter implements IPresenter {
 
     private View view;
 
