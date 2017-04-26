@@ -135,7 +135,6 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
 
     }
 
-# Model 和 Data
 ## Model
 数据处理，例如获取网络数据、IO数据。并将获取数据通过Presenter传递给View
 例如：
@@ -179,6 +178,7 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
 -keep class * implements com.kisen.mvplib.bean.Data{*;}
 
 #增加对列表的mvp实现
+-------
 其实list(RecyclerView、ListView)、Adapter、Model、Data。同样是mvp的体现，也可以使用mvp框架去实现。
 这里以RecyclerView为例(RecyclerView灵活，依赖少，可拓展性强，效果也很棒，建议大家使用)
 
@@ -300,6 +300,7 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
         }
     }
 
+## Item实现
 但是这样又会带来一个问题：数据类一般是由网络请求得到的，不会添加过多的类引用(例如：Context上下文,逻辑处理对象等)
 这样就会导致局限性，当我们有更多需求时，在这种方式下，处理数据类逻辑会更复杂，而数据类本身代码量也会随着处理逻辑的
 增加而增加。所以我们不适用数据类实现IAdapter，我们单独定义一个Item类实现IAdapter，并且增加相应的API：
