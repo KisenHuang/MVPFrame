@@ -3,12 +3,17 @@ package com.kisen.mvplib.model;
 import android.os.Bundle;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * Model返回结果
+ * <p>
+ * 不推荐直接使用方法：
+ * {@link ModelResult#getBundle()}
+ * {@link ModelResult#getException()}
+ * {@link ModelResult#getResultCode()}
+ * 推荐使用{@link ModelResult#analysis(ResultAnalysis)}方法
+ * 将数据解析返回
+ * </p>
  * Created by huang on 2017/3/23.
  */
-
 public class ModelResult {
 
     private final ModelException exception;
@@ -39,24 +44,47 @@ public class ModelResult {
         exception = e;
     }
 
-    public Bundle getBundle() {
-        return bundle;
-    }
-
     public void setBundle(Bundle bundle) {
         this.bundle = bundle;
     }
 
+    @Deprecated
+    public Bundle getBundle() {
+        return bundle;
+    }
+
+    @Deprecated
     public int getResultCode() {
         return resultCode;
     }
 
+    @Deprecated
     public ModelException getException() {
         return exception;
     }
 
     public ResultState getResultState() {
         return state;
+    }
+
+    /**
+     * 结果解析方法
+     * 将结果通过接口回调的方式进行解析，方便分类处理
+     *
+     * @param call 解析接口类
+     */
+    public void analysis(ResultAnalysis call) {
+        switch (state) {
+            case RESULT_OK:
+                call.success(resultCode, bundle);
+                break;
+            case RESULT_ERROR:
+                call.fail(resultCode, exception);
+                break;
+            default:
+                call.finish(resultCode);
+                break;
+        }
     }
 
     public enum ResultState {

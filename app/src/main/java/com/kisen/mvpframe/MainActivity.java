@@ -8,7 +8,7 @@ import com.kisen.mvpframe.list.ListActivity;
 import com.kisen.mvpframe.list.ListData;
 import com.kisen.mvpframe.login.LoginActivity;
 import com.kisen.mvplib.model.ModelException;
-import com.kisen.mvplib.presenter.AbsListPresenter;
+import com.kisen.mvplib.presenter.BaseListPresenter;
 import com.kisen.mvplib.view.MvpActivity;
 
 public class MainActivity extends MvpActivity implements View.OnClickListener {
@@ -40,7 +40,7 @@ public class MainActivity extends MvpActivity implements View.OnClickListener {
     }
 
     @Override
-    public AbsListPresenter<ListData> newPresenter() {
+    public BaseListPresenter<ListData> newPresenter() {
         return null;
     }
 

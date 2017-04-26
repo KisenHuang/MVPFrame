@@ -1,28 +1,33 @@
 package com.kisen.mvplib.presenter;
 
 import com.kisen.mvplib.bean.Data;
-import com.kisen.mvplib.listhelper.AbsItem;
+import com.kisen.mvplib.listhelper.Item;
 import com.kisen.mvplib.listhelper.BaseAdapter;
 import com.kisen.mvplib.listhelper.ItemLogic;
 import com.kisen.mvplib.listhelper.ItemFactory;
-import com.kisen.mvplib.view.IView;
+import com.kisen.mvplib.view.View;
 
 import java.util.List;
 
 
 /**
  * 列表Presenter
+ * <p>
+ * 绑定{@link ItemLogic}列表逻辑处理
+ * 生成默认BaseAdapter
+ * 使用ItemFactory生成Item列表
+ * </p>
  * Created by huang on 2017/2/7.
  */
-public abstract class AbsListPresenter<D extends Data> extends AbsPresenter {
+public abstract class BaseListPresenter<D extends Data> extends BasePresenter {
 
-    private AbsItem<D> mItemTemplate;
+    private Item<D> mItemTemplate;
     private ItemFactory<D> factory;
-    private ItemLogic itemLogic;
-    private BaseAdapter<AbsItem<D>> adapter;
+    protected ItemLogic itemLogic;
+    private BaseAdapter<Item<D>> adapter;
 
     @Override
-    public void attachView(IView view) {
+    public void attachView(View view) {
         super.attachView(view);
         mItemTemplate = setupItemTemplate();
         adapter = new BaseAdapter<>();
@@ -59,19 +64,19 @@ public abstract class AbsListPresenter<D extends Data> extends AbsPresenter {
      * @param list 生产Item所需数据源
      */
     public void notifyAfterLoad(List<D> list) {
-        List<AbsItem<D>> items = factory.makeItems(list, itemLogic);
+        List<Item<D>> items = factory.makeItems(list, itemLogic);
         adapter.addData(items);
     }
 
-    public BaseAdapter<AbsItem<D>> getAdapter() {
+    public BaseAdapter<Item<D>> getAdapter() {
         return adapter;
     }
 
     /**
      * 设置Item模板用于生产列表
-     * {@link AbsItem#newSelf()}
+     * {@link Item#newSelf()}
      *
      * @return 一个Item模板
      */
-    protected abstract AbsItem<D> setupItemTemplate();
+    protected abstract Item<D> setupItemTemplate();
 }

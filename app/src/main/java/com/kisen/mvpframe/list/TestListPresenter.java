@@ -1,11 +1,11 @@
 package com.kisen.mvpframe.list;
 
-import com.kisen.mvplib.listhelper.AbsItem;
+import com.kisen.mvplib.listhelper.Item;
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultCallback;
-import com.kisen.mvplib.presenter.AbsListPresenter;
+import com.kisen.mvplib.presenter.BaseListPresenter;
 import com.kisen.mvplib.util.RequestParam;
-import com.kisen.mvplib.view.IView;
+import com.kisen.mvplib.view.View;
 
 import java.util.ArrayList;
 
@@ -15,27 +15,25 @@ import java.util.ArrayList;
  * @Version :
  * Created by huang on 2017/3/22.
  */
-public class TestListPresenter extends AbsListPresenter<ListData> {
+public class TestListPresenter extends BaseListPresenter<ListData> {
 
     private ListModel model;
-    private MultiLogic multiLogic;
 
     @Override
-    public void attachView(IView view) {
+    public void attachView(View view) {
         super.attachView(view);
-        multiLogic = new MultiLogic();
-        setItemLogic(multiLogic);
+        setItemLogic(new MultiLogic());
         model = new ListModel();
     }
 
     @Override
-    protected AbsItem<ListData> setupItemTemplate() {
+    protected Item<ListData> setupItemTemplate() {
         return new ListItem();
     }
 
 
     public void setSelect(String ids) {
-        multiLogic.setSelectIds(ids);
+        itemLogic.setSelectIds(ids);
     }
 
     public void onRefresh(int resultCode, RequestParam param) {
@@ -55,7 +53,7 @@ public class TestListPresenter extends AbsListPresenter<ListData> {
     }
 
     public void commit(int resultCode) {
-        model.commit(resultCode, multiLogic, new DefResultCallback());
+        model.commit(resultCode, (MultiLogic) itemLogic, new DefResultCallback());
     }
 
 }

@@ -1,47 +1,90 @@
 package com.kisen.mvplib.listhelper;
 
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
+
+import com.kisen.mvplib.bean.Data;
 
 /**
- * @Title :
- * @Description :
- * @Version :
- * Created by huang on 2017/3/21.
+ * 自定义Item控制类
+ * <p>
+ * 将Adapter分成Item+Logic：
+ * Item表示View，Logic表示Item里的逻辑处理，数据源由Model获取
+ * </p>
+ * <p>
+ * {@link Item#itemEnable()} 如果开启Item点击事件
+ * {@link IAdapter#getItemResId()} Item的布局中最好不要出现Button类控件
+ * 可能会出现一些bug
+ * </p>
  */
+public abstract class Item<D extends Data> implements IAdapter, Interact<D>, View.OnClickListener {
 
-public interface Item {
+    protected D data;
+    protected ItemLogic logic;
+    protected BaseAdapter adapter;
+    protected int position;
+    protected Context mContext;
+
+    @Override
+    public void onBindViewHolder(BaseViewHolder helper, int adapterPosition) {
+        position = adapterPosition;
+        setViewData(helper);
+        helper.convertView.setEnabled(itemEnable());
+        helper.convertView.setOnClickListener(this);
+        onRefreshViewStyle();
+    }
+
+    @Override
+    public int getItemType() {
+        //默认返回 0，可重写
+        return 0;
+    }
+
+    @Override
+    public int getItemPosition() {
+        return position;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (logic != null && logic.isReady()) {
+            logic.onItemClick(adapter, this);
+        }
+        onItemClick(v);
+    }
 
     /**
-     * 需要实现，返回对应Item的布局文件Id 如果返回0，则使用适配器默认布局
-     *
-     * @return 返回当前数据类对应布局
+     * 返回Item持有数据
      */
-    int getItemResId();
+    public D getData() {
+        return data;
+    }
 
     /**
-     * 必须实现，在数据类中直接将数据适配到通过BaseViewHolder获取到的视图中
-     *
-     * @param helper          用来获取Item的控件
-     * @param adapterPosition 该Item在Adapter中的位置
-     *                        {@link android.widget.BaseAdapter#getView(int, View, ViewGroup)}
+     * 给Item设置数据
      */
-    void onBindViewHolder(BaseViewHolder helper, int adapterPosition);
+    public void setData(D data) {
+        this.data = data;
+    }
 
     /**
-     * 需要实现，默认返回0，同一列表中出现多种不同的布局时，必须返回不同的类型，
-     * 如果返回相同的值，会因BaseViewHolder复用出现布局错乱，处理数据时异常
-     * 在{@link Item#getItemResId()}中已经把对应的布局返回给适配器
-     *
-     * @return 返回当前自定义Item类型
-     * {@link android.widget.BaseAdapter#getItemViewType(int)}
+     * 设置Adapter
      */
-    int getItemType();
+    public void setAdapter(BaseAdapter adapter) {
+        this.adapter = adapter;
+    }
 
     /**
-     * 在Adapter中获取到的Item的位置数据
-     *
-     * @return item在adapter中的位置
+     * 设置处理逻辑
      */
-    int getItemPosition();
+    public void setLogic(ItemLogic logic) {
+        this.logic = logic;
+    }
+
+    /**
+     * 设置上下文
+     */
+    public void setContext(Context context) {
+        mContext = context;
+    }
 }

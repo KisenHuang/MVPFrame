@@ -1,24 +1,21 @@
 package com.kisen.mvplib.view;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.kisen.mvplib.model.ModelResult;
-import com.kisen.mvplib.presenter.IPresenter;
 import com.kisen.mvplib.model.ModelException;
+import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.model.ResultAnalysis;
+import com.kisen.mvplib.presenter.IPresenter;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * Mvp模式View模板Activity基类
  * Created by huang on 2017/2/7.
  */
-public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivity implements IView<P> {
+public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivity implements View<P> {
 
-    private ProgressDialog mProgressDialog;
     private P presenter;
     protected Context mContext;
 
@@ -26,7 +23,6 @@ public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        mProgressDialog = new ProgressDialog(this);
     }
 
     @Override
@@ -35,18 +31,6 @@ public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivit
         initView();
         initData();
         initListener();
-    }
-
-    private void showProgress() {
-        if (mProgressDialog.isShowing())
-            return;
-        mProgressDialog.setMessage("正在加载数据...");
-        mProgressDialog.show();
-    }
-
-    private void dismissProgress() {
-        if (mProgressDialog.isShowing())
-            mProgressDialog.dismiss();
     }
 
     /**
@@ -65,18 +49,18 @@ public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivit
     }
 
     @Override
-    public boolean onModelComplete(ModelResult result) {
-        if (result.getResultState() == ModelResult.ResultState.RESULT_ERROR) {
-            if (result.getException() != null)
-                handleError(result.getException());
-            return false;
-        } else {
-            return true;
-        }
+    public void onModelComplete(ModelResult result) {
+        result.analysis(new ResultAnalysis.DefResultAnalysis() {
+
+            @Override
+            public void fail(int reqCode, ModelException e) {
+                handleError(e);
+            }
+        });
     }
 
     /**
-     * 错误处理
+     * Model错误处理
      *
      * @param e 异常
      */
@@ -85,21 +69,10 @@ public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivit
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mContext = null;
         if (presenter != null) {
             presenter.detachView();
             presenter = null;
         }
-        dismissProgress();
-        mProgressDialog = null;
-    }
-
-    @Override
-    public void openLoadingAnim() {
-        showProgress();
-    }
-
-    @Override
-    public void closeLoadingAnim() {
-        dismissProgress();
     }
 }

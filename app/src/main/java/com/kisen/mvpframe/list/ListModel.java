@@ -3,7 +3,7 @@ package com.kisen.mvpframe.list;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.kisen.mvplib.listhelper.Item;
+import com.kisen.mvplib.listhelper.IAdapter;
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultCallback;
 import com.kisen.mvplib.util.RequestParam;
@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * 列表数据提供Model
  * Created by huang on 2017/3/23.
  */
 public class ListModel {
@@ -38,8 +36,8 @@ public class ListModel {
 
     public void commit(int resultCode, MultiLogic logic, ResultCallback callback) {
         StringBuilder builder = new StringBuilder();
-        List<Item> select = logic.getSelectItems();
-        for (Item item : select) {
+        List<IAdapter> select = logic.getSelectItems();
+        for (IAdapter item : select) {
             ListItem listItem = (ListItem) item;
             builder.append(listItem.getItemPosition());
         }

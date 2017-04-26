@@ -10,9 +10,13 @@ import android.widget.Toast;
 import com.kisen.mvpframe.R;
 import com.kisen.mvplib.model.ModelException;
 import com.kisen.mvplib.model.ModelResult;
+import com.kisen.mvplib.model.ResultAnalysis;
 import com.kisen.mvplib.view.MvpActivity;
 import com.kisen.mvplib.util.RequestParam;
 
+/**
+ *
+ */
 public class LoginActivity extends MvpActivity<LoginPresenter> implements View.OnClickListener {
 
     private TextView username;
@@ -46,6 +50,16 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements View.O
     }
 
     @Override
+    public void openLoadingAnim() {
+
+    }
+
+    @Override
+    public void closeLoadingAnim() {
+
+    }
+
+    @Override
     public void onClick(View v) {
         if (checkError()) {
             return;
@@ -57,15 +71,25 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements View.O
     }
 
     @Override
-    public boolean onModelComplete(ModelResult result) {
-        super.onModelComplete(result);
-        if (result.getResultState() == ModelResult.ResultState.RESULT_ERROR)
-            return false;
-        if (result.getResultCode() == 101) {
-            LoginData loginResult = getPresenter().getLoginResult();
-            Toast.makeText(mContext, "用户名：" + loginResult.getUserName() + " 密码：" + loginResult.getPwd(), Toast.LENGTH_SHORT).show();
-        }
-        return true;
+    public void onModelComplete(ModelResult result) {
+        result.analysis(new ResultAnalysis() {
+            @Override
+            public void success(int reqCode, Bundle args) {
+                if (reqCode == 101) {
+                    LoginData loginResult = getPresenter().getLoginResult();
+                    Toast.makeText(mContext, "用户名：" + loginResult.getUserName() +
+                            " 密码：" + loginResult.getPwd(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void fail(int reqCode, ModelException e) {
+            }
+
+            @Override
+            public void finish(int reqCode) {
+            }
+        });
     }
 
     @Override

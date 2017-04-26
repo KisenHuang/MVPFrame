@@ -7,7 +7,7 @@ import com.kisen.mvplib.presenter.IPresenter;
  * Activity接口
  * Created by huang on 2017/2/7.
  */
-public interface IView<P extends IPresenter> {
+public interface View<P extends IPresenter> {
 
     void initView();
 
@@ -36,7 +36,6 @@ public interface IView<P extends IPresenter> {
      * Model加载数据完成回调方法
      *
      * @param result 返回结果
-     * @return 返回是否处理成功
      */
-    boolean onModelComplete(ModelResult result);
+    void onModelComplete(ModelResult result);
 }

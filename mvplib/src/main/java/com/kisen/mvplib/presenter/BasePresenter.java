@@ -2,22 +2,22 @@ package com.kisen.mvplib.presenter;
 
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultCallback;
-import com.kisen.mvplib.view.IView;
+import com.kisen.mvplib.view.View;
 
 /**
  * 普通页面使用的Presenter
  * Created by huang on 2017/2/7.
  */
-public abstract class AbsPresenter implements IPresenter {
+public abstract class BasePresenter implements IPresenter {
 
-    private IView view;
+    private View view;
 
-    protected IView getView() {
+    protected View getView() {
         return view;
     }
 
     @Override
-    public void attachView(IView view) {
+    public void attachView(View view) {
         this.view = view;
     }
 

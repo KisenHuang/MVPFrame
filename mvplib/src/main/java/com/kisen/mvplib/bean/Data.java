@@ -10,7 +10,6 @@ import android.os.Parcelable;
  * </p>
  * Created by huang on 2017/2/7.
  */
-
 public abstract class Data implements Parcelable{
 
 }

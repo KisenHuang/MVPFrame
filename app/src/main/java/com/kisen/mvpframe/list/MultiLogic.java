@@ -3,20 +3,18 @@ package com.kisen.mvpframe.list;
 import android.support.v7.widget.RecyclerView;
 
 import com.kisen.mvplib.listhelper.ItemLogic;
-import com.kisen.mvplib.listhelper.Item;
+import com.kisen.mvplib.listhelper.IAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * 列表Item多选处理
  * Created by huang on 2017/3/21.
  */
 public class MultiLogic implements ItemLogic {
 
-    private List<Item> mSelectItems = new ArrayList<>();
+    private List<IAdapter> mSelectItems = new ArrayList<>();
     private String mSelectIds;
 
     @Override
@@ -25,7 +23,7 @@ public class MultiLogic implements ItemLogic {
     }
 
     @Override
-    public void onItemClick(RecyclerView.Adapter adapter, Item item) {
+    public void onItemClick(RecyclerView.Adapter adapter, IAdapter item) {
         if (mSelectItems.contains(item)) {
             mSelectItems.remove(item);
         } else {
@@ -35,12 +33,12 @@ public class MultiLogic implements ItemLogic {
     }
 
     @Override
-    public boolean isSelect(Item item) {
+    public boolean isSelect(IAdapter item) {
         return mSelectItems.contains(item);
     }
 
     @Override
-    public void setSelect(Item item) {
+    public void setSelect(IAdapter item) {
         mSelectItems.add(item);
     }
 
@@ -55,7 +53,7 @@ public class MultiLogic implements ItemLogic {
     }
 
     @Override
-    public List<Item> getSelectItems() {
+    public List<IAdapter> getSelectItems() {
         return mSelectItems;
     }
 

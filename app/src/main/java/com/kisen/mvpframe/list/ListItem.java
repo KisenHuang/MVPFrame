@@ -6,25 +6,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kisen.mvpframe.R;
-import com.kisen.mvplib.listhelper.AbsItem;
+import com.kisen.mvplib.listhelper.Item;
 import com.kisen.mvplib.listhelper.BaseViewHolder;
 
 /**
  * 首页Item样式
  * Created by huang on 2017/3/21.
  */
-public class ListItem extends AbsItem<ListData> {
+public class ListItem extends Item<ListData> {
 
     private TextView title;
 
     @Override
-    protected void setViewData(BaseViewHolder helper) {
+    public void setViewData(BaseViewHolder helper) {
         title = helper.getView(R.id.title);
         title.setText(data.getTitle());
     }
 
     @Override
-    protected void onRefreshViewStyle() {
+    public void onRefreshViewStyle() {
         if (logic.isSelect(this)) {
             title.setBackgroundColor(ContextCompat.getColor(mContext, R.color.green));
         } else {
@@ -45,13 +45,13 @@ public class ListItem extends AbsItem<ListData> {
     }
 
     @Override
-    protected boolean itemEnable() {
+    public boolean itemEnable() {
         return true;
     }
 
     @Override
-    protected void onItemClick(View v) {
-        Toast.makeText(mContext, "click Item " + position, Toast.LENGTH_SHORT).show();
+    public void onItemClick(View v) {
+        Toast.makeText(mContext, "click IAdapter " + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override

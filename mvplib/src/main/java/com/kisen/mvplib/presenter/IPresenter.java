@@ -2,7 +2,7 @@ package com.kisen.mvplib.presenter;
 
 import android.app.Activity;
 
-import com.kisen.mvplib.view.IView;
+import com.kisen.mvplib.view.View;
 
 /**
  * 页面数据处理逻辑
@@ -16,7 +16,7 @@ public interface IPresenter {
      *
      * @param view Activity对象
      */
-    void attachView(IView view);
+    void attachView(View view);
 
     /**
      * Activity被销毁时调用

@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * 适配器将工作转移到{@link Item}的实现类中
+ * 适配器将工作转移到{@link IAdapter}的实现类中
  * Created by huang on 2017/2/7.
  */
 
-public class BaseAdapter<I extends Item> extends RecyclerView.Adapter<BaseViewHolder> {
+public class BaseAdapter<I extends IAdapter> extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<I> mItems;
     private int itemPos;

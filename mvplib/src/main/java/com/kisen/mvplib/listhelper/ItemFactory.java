@@ -4,35 +4,35 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.kisen.mvplib.bean.Data;
-import com.kisen.mvplib.view.IView;
+import com.kisen.mvplib.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Item 工厂类
+ * item工厂类
  * Created by huang on 2017/3/3.
  */
 
 public class ItemFactory<D extends Data> {
 
-    private AbsItem<D> template;
-    private BaseAdapter<AbsItem<D>> adapter;
+    private Item<D> template;
+    private BaseAdapter<Item<D>> adapter;
     private Context context;
 
-    public ItemFactory(IView view, AbsItem<D> template, BaseAdapter<AbsItem<D>> adapter) {
+    public ItemFactory(View view, Item<D> template, BaseAdapter<Item<D>> adapter) {
         this.template = template;
         this.adapter = adapter;
         context = (Context) view;
     }
 
     @Nullable
-    public List<AbsItem<D>> makeItems(List<D> list, ItemLogic logic) {
+    public List<Item<D>> makeItems(List<D> list, ItemLogic logic) {
         if (list == null)
             return null;
-        List<AbsItem<D>> items = new ArrayList<>();
+        List<Item<D>> items = new ArrayList<>();
         for (D d : list) {
-            AbsItem<D> item = template.newSelf();
+            Item<D> item = template.newSelf();
             item.setLogic(logic);
             item.setContext(context);
             item.setAdapter(adapter);
