@@ -182,7 +182,7 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
 其实list(RecyclerView、ListView)、Adapter、Model、Data。同样是mvp的体现，也可以使用mvp框架去实现。
 这里以RecyclerView为例(RecyclerView灵活，依赖少，可拓展性强，效果也很棒，建议大家使用)
 
-##Adapter
+## Adapter
 一般我们在写列表界面时都会写很多Adapter，代码重复，无非就是onBindViewHolder(),getItemViewType(),getItemCount()
 和onCreateViewHolder()方法，我们可以将这几个方法的实现转移到Data数据类中，这样我们定义IAdapter接口：
 
