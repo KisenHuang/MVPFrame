@@ -5,8 +5,8 @@ MVP组成
 -------
 ># Presenter
 >负责View与Model之间的交互和数据通信
->public interface IPresenter {
 
+    public interface IPresenter {
      /**
       * Presenter被初始化时调用
       *
@@ -19,7 +19,7 @@ MVP组成
       * {@link Activity#onDestroy()}
       */
      void detachView();
- }
+    }
 
 ># View
 >主要处理UI交互
