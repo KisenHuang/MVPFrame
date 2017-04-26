@@ -505,7 +505,7 @@ Item、Model、Logic(如果不需要，可以不创建，而且可以重复使�
 
 # License
 
-Copyright 2014 The Android Open Source Project, Inc.
+Copyright 2017 huang
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
