@@ -177,7 +177,7 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
 定义Data的意义在于，再打包时，数据模型类不能被混淆，这时就可以
 -keep class * implements com.kisen.mvplib.bean.Data{*;}
 
-#增加对列表的mvp实现
+# 增加对列表的mvp实现
 -------
 其实list(RecyclerView、ListView)、Adapter、Model、Data。同样是mvp的体现，也可以使用mvp框架去实现。
 这里以RecyclerView为例(RecyclerView灵活，依赖少，可拓展性强，效果也很棒，建议大家使用)
