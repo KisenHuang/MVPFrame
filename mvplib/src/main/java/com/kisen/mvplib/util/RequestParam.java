@@ -5,12 +5,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * 网络请求参数组装类
  * Created by huang on 2017/3/22.
  */
-
 public class RequestParam {
 
     private Map<String, Object> mParams;

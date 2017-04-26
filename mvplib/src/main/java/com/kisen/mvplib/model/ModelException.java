@@ -1,9 +1,10 @@
 package com.kisen.mvplib.model;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * Model获取异常类
+ * <p>
+ * 异常类型包括网络异常和IO异常
+ * </p>
  * Created by huang on 2017/3/22.
  */
 public class ModelException extends Exception {

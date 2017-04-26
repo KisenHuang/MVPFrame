@@ -4,12 +4,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * Item衔接Adapter的接口
  * Created by huang on 2017/3/21.
  */
-
 public interface IAdapter {
 
     /**

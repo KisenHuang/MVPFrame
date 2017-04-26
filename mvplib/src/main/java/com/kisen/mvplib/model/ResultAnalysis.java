@@ -3,9 +3,7 @@ package com.kisen.mvplib.model;
 import android.os.Bundle;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * Model返回结果解析接口
  * Created by huang on 2017/4/26.
  */
 public interface ResultAnalysis {
@@ -32,7 +30,7 @@ public interface ResultAnalysis {
      */
     void finish(int reqCode);
 
-    public static class DefResultAnalysis implements ResultAnalysis{
+    public static class DefResultAnalysis implements ResultAnalysis {
 
         @Override
         public void success(int reqCode, Bundle args) {

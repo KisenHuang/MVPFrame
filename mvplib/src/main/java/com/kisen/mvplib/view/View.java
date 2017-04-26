@@ -9,10 +9,19 @@ import com.kisen.mvplib.presenter.IPresenter;
  */
 public interface View<P extends IPresenter> {
 
+    /**
+     * 初始化视图
+     */
     void initView();
 
+    /**
+     * 初始化数据
+     */
     void initData();
 
+    /**
+     * 初始化监听
+     */
     void initListener();
 
     /**

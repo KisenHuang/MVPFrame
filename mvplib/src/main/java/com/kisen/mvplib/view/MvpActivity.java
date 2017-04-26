@@ -8,13 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import com.kisen.mvplib.model.ModelException;
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultAnalysis;
-import com.kisen.mvplib.presenter.IPresenter;
+import com.kisen.mvplib.presenter.BasePresenter;
 
 /**
  * Mvp模式View模板Activity基类
  * Created by huang on 2017/2/7.
  */
-public abstract class MvpActivity<P extends IPresenter> extends AppCompatActivity implements View<P> {
+public abstract class MvpActivity<P extends BasePresenter> extends AppCompatActivity implements View<P> {
 
     private P presenter;
     protected Context mContext;

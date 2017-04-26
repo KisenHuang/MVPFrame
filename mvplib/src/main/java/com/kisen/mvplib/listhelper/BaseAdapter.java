@@ -11,7 +11,6 @@ import java.util.List;
  * 适配器将工作转移到{@link IAdapter}的实现类中
  * Created by huang on 2017/2/7.
  */
-
 public class BaseAdapter<I extends IAdapter> extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<I> mItems;
@@ -39,6 +38,9 @@ public class BaseAdapter<I extends IAdapter> extends RecyclerView.Adapter<BaseVi
         return mItems == null ? 0 : mItems.size();
     }
 
+    /**
+     * 添加列表数据
+     */
     public void addData(List<I> items) {
         if (items == null)
             return;
@@ -50,11 +52,17 @@ public class BaseAdapter<I extends IAdapter> extends RecyclerView.Adapter<BaseVi
         notifyDataSetChanged();
     }
 
-    public void clear(){
+    /**
+     * 清空列表
+     */
+    public void clear() {
         mItems.clear();
         notifyDataSetChanged();
     }
 
+    /**
+     * 获取某个位置的Item
+     */
     public I getItem(int position) {
         return mItems.get(position);
     }

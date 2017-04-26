@@ -5,12 +5,9 @@ import android.util.SparseArray;
 import android.view.View;
 
 /**
- * @Title :
- * @Description :
- * @Version :
+ * 自己封装的ViewHolder
  * Created by huang on 2017/2/7.
  */
-
 public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     protected final SparseArray<View> views;

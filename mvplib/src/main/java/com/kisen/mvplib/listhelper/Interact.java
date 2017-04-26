@@ -5,7 +5,7 @@ import android.view.View;
 import com.kisen.mvplib.bean.Data;
 
 /**
- *
+ * Item的交互与逻辑接口
  * Created by huang on 2017/4/26.
  */
 public interface Interact<D extends Data> {
