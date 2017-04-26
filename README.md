@@ -49,7 +49,7 @@
 ## View
 主要负责UI交互，通过initView、initData、initListener、newPresenter初始化，注newPresenter只能被调用一次，
 需要保证View中presenter对象不变。openLoadingAnim和closeLoadingAnim是进行有延时操作时对Loading效果的控制。
-onModelComplete(ModelResult) 是Model处理数据的结果返回
+onModelComplete(ModelResult) 是Model处理数据的结果回调方法
 
     public interface View<P extends BasePresenter> {
 
@@ -139,6 +139,7 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
 ## Model
 数据处理，例如获取网络数据、IO数据。并将获取数据通过Presenter传递给View
 例如：
+
     public class ListModel {
 
         public void onRefresh(final int resultCode, RequestParam param, final ResultCallback callback) {
