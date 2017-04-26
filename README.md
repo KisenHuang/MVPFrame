@@ -502,3 +502,19 @@ Item类还是实现了Interact接口，Interact接口主要是一些Item的交�
 类的数量就少了很多，这里我们提取了View、Presenter、BaseAdapter、Item，这样我们在使用时，普通页面只需要创建四个类
 ：Activity、Model、Presenter、Data，而列表界面就比较多了，需要创建六各类：Activity、ListPresenter、
 Item、Model、Logic(如果不需要，可以不创建，而且可以重复使用，与Item是解耦和的)、Data;
+
+# License
+
+Copyright 2014 The Android Open Source Project, Inc.
+
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.
+See the NOTICE file distributed with this work for additional information regarding copyright ownership.
+The ASF licenses this file to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License
+ is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ or implied. See the License for the specific language governing permissions and limitations
+ under the License.
