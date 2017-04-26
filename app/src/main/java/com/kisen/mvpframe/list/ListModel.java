@@ -6,7 +6,7 @@ import android.os.Handler;
 import com.kisen.mvplib.listhelper.IAdapter;
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultCallback;
-import com.kisen.mvplib.util.RequestParam;
+import com.kisen.mvpframe.util.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;

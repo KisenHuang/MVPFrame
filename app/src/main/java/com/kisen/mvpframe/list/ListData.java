@@ -4,12 +4,6 @@ import android.os.Parcel;
 
 import com.kisen.mvplib.bean.Data;
 
-/**
- * @Title :
- * @Description :
- * @Version :
- * Created by huang on 2017/2/7.
- */
 public class ListData extends Data {
 
     private int id;

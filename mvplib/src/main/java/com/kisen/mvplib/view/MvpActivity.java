@@ -59,6 +59,16 @@ public abstract class MvpActivity<P extends BasePresenter> extends AppCompatActi
         });
     }
 
+    @Override
+    public void openLoadingAnim() {
+
+    }
+
+    @Override
+    public void closeLoadingAnim() {
+
+    }
+
     /**
      * Model错误处理
      *

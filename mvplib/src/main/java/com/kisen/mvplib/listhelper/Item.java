@@ -29,8 +29,8 @@ public abstract class Item<D extends Data> implements IAdapter, Interact<D>, Vie
     public void onBindViewHolder(BaseViewHolder helper, int adapterPosition) {
         position = adapterPosition;
         setViewData(helper);
-        helper.convertView.setEnabled(itemEnable());
-        helper.convertView.setOnClickListener(this);
+        helper.itemView.setEnabled(itemEnable());
+        helper.itemView.setOnClickListener(this);
         onRefreshViewStyle();
     }
 

@@ -3,7 +3,7 @@ package com.kisen.mvpframe.login;
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultCallback;
 import com.kisen.mvplib.presenter.BasePresenter;
-import com.kisen.mvplib.util.RequestParam;
+import com.kisen.mvpframe.util.RequestParam;
 import com.kisen.mvplib.view.View;
 
 /**

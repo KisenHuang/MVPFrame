@@ -1,4 +1,4 @@
-package com.kisen.mvplib.util;
+package com.kisen.mvpframe.util;
 
 import java.util.HashMap;
 import java.util.Map;

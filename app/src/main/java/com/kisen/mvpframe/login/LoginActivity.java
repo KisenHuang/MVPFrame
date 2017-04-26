@@ -12,7 +12,7 @@ import com.kisen.mvplib.model.ModelException;
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultAnalysis;
 import com.kisen.mvplib.view.MvpActivity;
-import com.kisen.mvplib.util.RequestParam;
+import com.kisen.mvpframe.util.RequestParam;
 
 /**
  *
@@ -47,16 +47,6 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements View.O
     @Override
     public LoginPresenter newPresenter() {
         return new LoginPresenter();
-    }
-
-    @Override
-    public void openLoadingAnim() {
-
-    }
-
-    @Override
-    public void closeLoadingAnim() {
-
     }
 
     @Override

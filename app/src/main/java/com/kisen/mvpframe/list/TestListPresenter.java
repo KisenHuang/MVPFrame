@@ -4,7 +4,7 @@ import com.kisen.mvplib.listhelper.Item;
 import com.kisen.mvplib.model.ModelResult;
 import com.kisen.mvplib.model.ResultCallback;
 import com.kisen.mvplib.presenter.BaseListPresenter;
-import com.kisen.mvplib.util.RequestParam;
+import com.kisen.mvpframe.util.RequestParam;
 import com.kisen.mvplib.view.View;
 
 import java.util.ArrayList;
