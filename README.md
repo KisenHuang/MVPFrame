@@ -172,6 +172,23 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
             callback.onComplete(result);
         }
     }
+
+    @Override
+        protected void handleError(ModelException e) {
+                switch (e.getErrorType()) {
+                    case ModelException.ERROR_NET_NONE:
+                        break;
+                    case ModelException.ERROR_NET_UNSTABLE:
+                        break;
+                    case ModelException.ERROR_NET_SERVER:
+                        break;
+                    case ModelException.ERROR_IO_CACHE:
+                        break;
+                    case ModelException.ERROR_IO_LOCAL:
+                        break;
+                }
+        }
+
 ## Data
 数据模型，默认实现Parcelable接口。
 定义Data的意义在于，再打包时，数据模型类不能被混淆，这时就可以
@@ -303,7 +320,7 @@ Activity的基类实现，将View嵌入到Activity中。获取Presenter对象不
 ## Item实现
 但是这样又会带来一个问题：数据类一般是由网络请求得到的，不会添加过多的类引用(例如：Context上下文,逻辑处理对象等)
 这样就会导致局限性，当我们有更多需求时，在这种方式下，处理数据类逻辑会更复杂，而数据类本身代码量也会随着处理逻辑的
-增加而增加。所以我们不适用数据类实现IAdapter，我们单独定义一个Item类实现IAdapter，并且增加相应的API：
+增加而增加。所以我们不使用数据类实现IAdapter，我们单独定义一个Item类实现IAdapter，并且增加相应的API：
 
     public abstract class Item<D extends Data> implements IAdapter, Interact<D>, View.OnClickListener {
 
